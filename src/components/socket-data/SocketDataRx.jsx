@@ -7,6 +7,9 @@ export class SocketDataRx extends PureComponent {
 	state = {
 		busy: false,
 		dataStream$: new Subject(),
+	//
+		stop$: new Subject(false),
+	//
 	}
 
 	componentDidMount() {
@@ -19,9 +22,16 @@ export class SocketDataRx extends PureComponent {
 		//
 			// .do(v => console.log(v))
 			// .distinct()
+			.takeUntil(this.state.stop$)
 		//
 			.subscribe(busy => this.setState({ busy }));
 	}
+
+//
+	componentWillUnmount() {
+		this.state.stop$.next(true);
+	}
+//
 
 
 	render() {

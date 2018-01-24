@@ -21,5 +21,6 @@ export const ExampleList = () => (
 				: <Link key={`${id}-B`} to={`${index + 1}-${id}-Rx`}>RxJS</Link>
 			</li>
 		))}
+		<li><Link to="/3-ui-events-connect-less">Connect Less (UI Events)</Link></li>
 	</ul>
 );

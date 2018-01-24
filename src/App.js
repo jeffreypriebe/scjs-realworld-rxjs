@@ -18,6 +18,7 @@ class App extends Component {
           <Route exact path="/1-ui-events-debounce-Rx" component={components.UIEventsDebounceRx} />
           <Route exact path="/2-socket-data" component={components.SocketData} />
           <Route exact path="/2-socket-data-Rx" component={components.SocketDataRx} />
+          <Route exact path="/3-ui-events-connect-less" component={components.UIEventsDebounceRxConnectless} />
         </Switch>
       </div>
     );

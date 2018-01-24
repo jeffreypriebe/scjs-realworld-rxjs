@@ -1,4 +1,4 @@
-const params = 'location=36.97411709999999,-122.03079630000002&radius=15000&strictbounds&key=AIzaSyB7JUB7FGIa7rqwR0WEio_ZO6t8r4q_UkE';
+const params = 'location=36.97411709999999,-122.03079630000002&radius=15000&strictbounds&key=AIzaSyBvTPKa5AIVmfwUkFMlekQu6PEO9ekNe_k';
 
 export const getPlacesType = 'GET_PLACES';
 

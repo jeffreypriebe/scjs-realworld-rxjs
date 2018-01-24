@@ -15,6 +15,7 @@ export class SocketData extends PureComponent {
 		});
 	//
 		// ws.onmessage = ({ data: numTyping }) => {
+		// could also use shouldComponentUpdate
 		// 	if (this.state.numTyping !== numTyping) this.setState({
 		// 		numTyping,
 		// 		busy: numTyping > 0

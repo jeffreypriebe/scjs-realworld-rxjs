@@ -31,7 +31,7 @@ export class UIEventsDebounceComp extends PureComponent {
 //
 
 	render() {
-		const { text } = this.props;
+		const { text } = this.state;
 		const { places } = this.props;
 
 		return <PlacesView text={text} places={places} onChange={this.textChange} />
