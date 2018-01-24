@@ -1,34 +1,29 @@
 import React, { PureComponent } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Subject } from 'rxjs';
 
 import { getPlaces } from '../../actions';
 import { PlacesView } from './PlacesView';
 
-export class UIEventsDebounceComp extends PureComponent {
+export class UIEventsDebounceRxComp extends PureComponent {
 	state = {
 		text: undefined,
+		textStream$: new Subject(),
+	}
+
+	componentDidMount() {
+		this.state.textStream$
+			.debounceTime(400)
+			.subscribe(text => this.setState({ text }, () => {
+				this.props.getPlaces(text);
+			}));
 	}
 
 	textChange = evt => {
 		const { value: text } = evt.target;
-		this.setState({ text }, () => {
-			this.props.getPlaces(text);
-		});
+		this.state.textStream$.next(text);
 	}
-
-//
-	// textChange = evt => {
-	// 	const { value: text } = evt.target;
-	// 	if (this.timeout) clearTimeout(this.timeout);
-
-	// 	this.timeout = setTimeout(() => {
-	// 		this.setState({ text }, () => {
-	// 			this.props.getPlaces(text);
-	// 		});
-	// 	}, 400);
-	// }
-//
 
 	render() {
 		const { text } = this.props;
@@ -38,7 +33,7 @@ export class UIEventsDebounceComp extends PureComponent {
 	}
 };
 
-export const UIEventsDebounce = connect(
+export const UIEventsDebounceRx = connect(
 	({ places: { places } }) => ({ places }),
 	dispatch => bindActionCreators({ getPlaces }, dispatch),
-)(UIEventsDebounceComp);
+)(UIEventsDebounceRxComp);

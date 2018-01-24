@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router } from 'react-router-dom';
-import { applyMiddleware, compose, createStore } from 'redux';
+import { applyMiddleware, compose, combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from './store';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+
+import { places } from './reducers';
+const reducers = { places };
 
 const enhancers = [];
 
@@ -24,8 +27,7 @@ const composedEnhancers = compose(
 )
 
 const store = createStore(
-	() => {},
-	null,
+	combineReducers(reducers),
 	composedEnhancers,
 );
 

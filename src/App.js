@@ -15,6 +15,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={components.ExampleList} />
           <Route exact path="/1-ui-events-debounce-A" component={components.UIEventsDebounce} />
+          <Route exact path="/1-ui-events-debounce-B" component={components.UIEventsDebounceRx} />
         </Switch>
       </div>
     );
