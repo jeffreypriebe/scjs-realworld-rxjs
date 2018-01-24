@@ -1,24 +1,10 @@
-function createThunkMiddleware(extraArgument) {
-  return ({ dispatch, getState }) => next => action => {
-    if (typeof action === 'function') {
-		return action(dispatch, getState, extraArgument);
-    } else if (typeof action.then === 'function') {
-		action
-			.then(result => {
-				console.warn('then')
-				console.info(result)
-				return next(result)
-			})
-			.catch(err => {
-				console.warn('err')
-				console.error(err)
-				return next(err)
-			});
-	}
+export const createThunkMiddleware = extraArgument =>
+	({ dispatch, getState }) => next => async action => {
+		while (typeof action === 'function') action = action({ dispatch, getState, extraArgument });
+		if (action && typeof action.then === 'function') await action.then(a => { action = a; });
 
-    return next(action);
-  };
-}
+		return (!action) ? null : next(action);
+	};
 
 const thunk = createThunkMiddleware();
 thunk.withExtraArgument = createThunkMiddleware;
