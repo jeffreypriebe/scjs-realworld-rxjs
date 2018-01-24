@@ -14,8 +14,10 @@ class App extends Component {
         </header>
         <Switch>
           <Route exact path="/" component={components.ExampleList} />
-          <Route exact path="/1-ui-events-debounce-A" component={components.UIEventsDebounce} />
-          <Route exact path="/1-ui-events-debounce-B" component={components.UIEventsDebounceRx} />
+          <Route exact path="/1-ui-events-debounce" component={components.UIEventsDebounce} />
+          <Route exact path="/1-ui-events-debounce-Rx" component={components.UIEventsDebounceRx} />
+          <Route exact path="/2-socket-data" component={components.SocketData} />
+          <Route exact path="/2-socket-data-Rx" component={components.SocketDataRx} />
         </Switch>
       </div>
     );

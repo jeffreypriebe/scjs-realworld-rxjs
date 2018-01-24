@@ -6,18 +6,20 @@ const examples = [
 		id: 'ui-events-debounce',
 		label: 'UI Events Debounce',
 	},
+	{
+		id: 'socket-data',
+		label: 'Socket Data',
+	},
 ];
 
 export const ExampleList = () => (
 	<ul>
-		<li>
-			{examples.map(({ id, label }, index) => (
-				<span>
-					{label}
-					: <Link key={id} to={`${index + 1}-${id}-A`}>Non-Reactive</Link>
-					: <Link key={id} to={`${index + 1}-${id}-B`}>RxJS</Link>
-				</span>
-			))}
-		</li>
+		{examples.map(({ id, label }, index) => (
+			<li key={`${id}-li`}>
+				{label}
+				: <Link key={`${id}-A`} to={`${index + 1}-${id}`}>Non-Reactive</Link>
+				: <Link key={`${id}-B`} to={`${index + 1}-${id}-Rx`}>RxJS</Link>
+			</li>
+		))}
 	</ul>
 );
