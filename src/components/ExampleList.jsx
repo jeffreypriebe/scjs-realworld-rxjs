@@ -21,6 +21,10 @@ export const ExampleList = () => (
 				: <Link key={`${id}-B`} to={`${index + 1}-${id}-Rx`}>RxJS</Link>
 			</li>
 		))}
-		<li><Link to="/3-ui-events-connect-less">Connect Less (UI Events)</Link></li>
+		<li>
+			Connect Less (UI Events)
+			: <Link to="/3-ui-events-connect-less">Rx</Link>
+			: <Link to="/3-ui-events-connect-less-redux">Redux</Link>
+		</li>
 	</ul>
 );

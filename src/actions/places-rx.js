@@ -21,7 +21,6 @@ const getPlacesApi = async input => {
 	);
 
 	const { predictions } = await result.json();
-	console.log(predictions)
 
 	places$.next(predictions);
 };
