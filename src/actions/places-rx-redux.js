@@ -14,8 +14,6 @@ const store = createStore(
 );
 // store is middleware free
 
-const store$ = new Subject();
-
 store.subscribe(() => { storeChanged(store.getState()); });
 
 
@@ -54,8 +52,8 @@ const getPlacesApi = async input => {
 const storeChanged = reduxState => {
 	const { places } = reduxState;
 
-	// Check that we haven't already seen this list
-	// With multiple api calls or actions feeding the redux state, this will get called for _all_ store changes
+	// TODO: Check that this isn't the list already at the head of the stream
+	// n.b.: With multiple api calls or actions feeding the redux state, this will get called for _all_ store changes
 	// As written, a redux state change of 'user login' will send a new `places` into the places$ stream
 	places$.next(places);
 };
